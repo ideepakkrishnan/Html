@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.neu.html_visitor.NodeVisitor;
+
 /**
  * @author ideepakkrishnan
  *
@@ -37,25 +39,25 @@ public class B extends Node {
 		List<Node> children = new ArrayList<Node>();
 		children.add(child);
 		
-		this.atts = atts;
-		this.children = children;
+		this.setAtts(atts);
+		this.setChildren(children);
 	}
 	
 	@Override
 	public String textualRepresentation() {
 		StringBuilder sb = new StringBuilder("<b");
 		SortedSet<String> attKeys = new TreeSet<String>();
-		for (Map.Entry<String, String> entry : this.atts.entrySet()) {
+		for (Map.Entry<String, String> entry : this.getAtts().entrySet()) {
 			attKeys.add(entry.getKey());
 		}
 		
 		for (String key : attKeys) {
 			sb.append(" ");
-			sb.append(key + "=" + this.atts.get(key));
+			sb.append(key + "=" + this.getAtts().get(key));
 		}
 		sb.append(">");
 		
-		for (Node n : children) {
+		for (Node n : getChildren()) {
 			// There is no point of <b> tag inside
 			// another <b> tag
 			if (!(n instanceof B)) {
@@ -64,6 +66,11 @@ public class B extends Node {
 		}
 		sb.append("</b>");
 		return sb.toString();
+	}
+
+	@Override
+	public void accept(NodeVisitor v) {
+		v.visitB(this);
 	}
 
 }

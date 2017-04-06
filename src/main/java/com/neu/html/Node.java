@@ -8,16 +8,60 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.neu.html_visitor.NodeVisitor;
+
 /**
  * @author ideepakkrishnan
  *
  */
 public abstract class Node {
 	
-	String content;
-	Map<String, String> atts;
-	List<Node> children;
+	private String content;
+	private Map<String, String> atts;
+	private List<Node> children;
 	
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	/**
+	 * @return the atts
+	 */
+	public Map<String, String> getAtts() {
+		return atts;
+	}
+
+	/**
+	 * @param atts the atts to set
+	 */
+	public void setAtts(Map<String, String> atts) {
+		this.atts = atts;
+	}
+
+	/**
+	 * @return the children
+	 */
+	public List<Node> getChildren() {
+		return children;
+	}
+
+	/**
+	 * @param children the children to set
+	 */
+	public void setChildren(List<Node> children) {
+		this.children = children;
+	}
+
 	public Node() {
 		this.content = new String();
 		this.atts = new HashMap<String, String>();
@@ -35,5 +79,7 @@ public abstract class Node {
 	}
 	
 	public abstract String textualRepresentation();
+	
+	public abstract void accept(NodeVisitor v);
 
 }

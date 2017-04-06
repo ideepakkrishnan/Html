@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.neu.html_visitor.NodeVisitor;
+
 /**
  * @author ideepakkrishnan
  *
@@ -28,8 +30,8 @@ public class HTML extends Node {
 	}
 	
 	public void set(Map<String, String> atts, List<Node> children) {
-		this.atts = atts;
-		this.children = children;
+		this.setAtts(atts);
+		this.setChildren(children);
 	}
 	
 	@Override
@@ -37,17 +39,17 @@ public class HTML extends Node {
 		StringBuilder sb = new StringBuilder("<html");
 		
 		SortedSet<String> attKeys = new TreeSet<String>();
-		for (Map.Entry<String, String> entry : this.atts.entrySet()) {
+		for (Map.Entry<String, String> entry : this.getAtts().entrySet()) {
 			attKeys.add(entry.getKey());
 		}
 		
 		for (String key : attKeys) {
 			sb.append(" ");
-			sb.append(key + "=" + this.atts.get(key));
+			sb.append(key + "=" + this.getAtts().get(key));
 		}
 		sb.append(">");
 		
-		for (Node n : children) {
+		for (Node n : getChildren()) {
 			// <html> tag cannot have another <html>
 			// tag as child
 			if (n instanceof Head || n instanceof Body) {
@@ -56,6 +58,11 @@ public class HTML extends Node {
 		}
 		sb.append("</html>");
 		return sb.toString();
+	}
+
+	@Override
+	public void accept(NodeVisitor v) {
+		v.visitHTML(this);
 	}
 
 }
