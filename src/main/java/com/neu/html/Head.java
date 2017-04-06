@@ -20,10 +20,16 @@ public class Head extends Node {
 	
 	public Head(Map<String, String> atts, String content) {
 		// Do Nothing since <head> does not allow any contents
+		super();
 	}
 	
 	public Head(Map<String, String> atts, List<Node> children) {
 		super(atts, children);
+	}
+	
+	public void set(Map<String, String> atts, List<Node> children) {
+		this.atts = atts;
+		this.children = children;
 	}
 	
 	@Override
@@ -41,7 +47,9 @@ public class Head extends Node {
 		sb.append(">");
 		
 		for (Node n : children) {
-			sb.append(n.textualRepresentation());
+			if (n instanceof Title) {
+				sb.append(n.textualRepresentation());
+			}
 		}
 		sb.append("</head>");
 		return sb.toString();

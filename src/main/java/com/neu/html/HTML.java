@@ -27,6 +27,11 @@ public class HTML extends Node {
 		super(atts, children);
 	}
 	
+	public void set(Map<String, String> atts, List<Node> children) {
+		this.atts = atts;
+		this.children = children;
+	}
+	
 	@Override
 	public String textualRepresentation() {
 		StringBuilder sb = new StringBuilder("<html");
@@ -45,7 +50,7 @@ public class HTML extends Node {
 		for (Node n : children) {
 			// <html> tag cannot have another <html>
 			// tag as child
-			if (!(n instanceof HTML)) {
+			if (n instanceof Head || n instanceof Body) {
 				sb.append(n.textualRepresentation());
 			}
 		}

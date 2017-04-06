@@ -19,11 +19,18 @@ public class Body extends Node {
 	}
 	
 	public Body(Map<String, String> atts, String content) {
-		super(atts, content);
+		// Do nothing since only Node objects are considered
+		// to be valid children for Body
+		super();
 	}
 	
 	public Body(Map<String, String> atts, List<Node> children) {
 		super(atts, children);
+	}
+	
+	public void set(Map<String, String> atts, List<Node> children) {
+		this.atts = atts;
+		this.children = children;
 	}
 	
 	@Override

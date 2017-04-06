@@ -27,6 +27,11 @@ public class Div extends Node {
 		// objects as children
 	}
 	
+	public void set(Map<String, String> atts, String content) {
+		this.atts = atts;
+		this.content = content;
+	}
+	
 	@Override
 	public String textualRepresentation() {
 		StringBuilder sb = new StringBuilder("<div");

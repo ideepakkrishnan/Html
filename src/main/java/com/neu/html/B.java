@@ -22,9 +22,18 @@ public class B extends Node {
 	public B(Map<String, String> atts, String content) {
 		// Do nothing since <b> is expected to have
 		// Node objects as children
+		super();
 	}
 	
 	public B(Map<String, String> atts, Node child) {
+		set(atts, child);
+	}
+	
+	public B(Map<String, String> atts, List<Node> child) {
+		super();
+	}
+	
+	public void set(Map<String, String> atts, Node child) {
 		List<Node> children = new ArrayList<Node>();
 		children.add(child);
 		

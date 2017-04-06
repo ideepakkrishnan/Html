@@ -3,6 +3,8 @@
  */
 package com.neu.html;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +19,9 @@ public abstract class Node {
 	List<Node> children;
 	
 	public Node() {
-		// Do nothing
+		this.content = new String();
+		this.atts = new HashMap<String, String>();
+		this.children = new ArrayList<Node>();
 	}
 	
 	public Node(Map<String, String> atts, String content) {
@@ -30,8 +34,6 @@ public abstract class Node {
 		this.children = children;
 	}
 	
-	public String textualRepresentation() {
-		return content;
-	}
+	public abstract String textualRepresentation();
 
 }
