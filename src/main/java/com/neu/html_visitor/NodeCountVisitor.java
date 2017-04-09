@@ -118,22 +118,20 @@ public class NodeCountVisitor implements NodeVisitor {
 	}
 	
 	private void count(Node n) {
-		if (n instanceof B) {
-			bCount++;
-		} else if (n instanceof Body) {
-			bodyCount++;
-		} else if (n instanceof Div) {
-			divCount++;
-		} else if (n instanceof Head) {
-			headCount++;
-		} else if (n instanceof HTML) {
-			htmlCount++;
-		} else if (n instanceof Title) {
-			titleCount++;
-		}
-		
 		for (Node child : n.getChildren()) {
-			count(child);
+			if (child instanceof B) {
+				visitB((B) child);
+			} else if (child instanceof Body) {
+				visitBody((Body) child);
+			} else if (child instanceof Div) {
+				visitDiv((Div) child);
+			} else if (child instanceof Head) {
+				visitHead((Head) child);
+			} else if (child instanceof HTML) {
+				visitHTML((HTML) child);
+			} else if (child instanceof Title) {
+				visitTitle((Title) child);
+			}
 		}
 	}
 
@@ -141,6 +139,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitHTML(com.neu.html.HTML)
 	 */
 	public void visitHTML(HTML h) {
+		this.htmlCount++;
 		count(h);
 	}
 
@@ -148,6 +147,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitHead(com.neu.html.Head)
 	 */
 	public void visitHead(Head h) {
+		this.headCount++;
 		count(h);
 	}
 
@@ -155,6 +155,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitBody(com.neu.html.Body)
 	 */
 	public void visitBody(Body b) {
+		this.bodyCount++;
 		count(b);
 	}
 
@@ -162,6 +163,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitTitle(com.neu.html.Title)
 	 */
 	public void visitTitle(Title t) {
+		this.titleCount++;
 		count(t);
 	}
 
@@ -169,6 +171,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitDiv(com.neu.html.Div)
 	 */
 	public void visitDiv(Div d) {
+		this.divCount++;
 		count(d);
 	}
 
@@ -176,6 +179,7 @@ public class NodeCountVisitor implements NodeVisitor {
 	 * @see com.neu.html_visitor.NodeVisitor#visitB(com.neu.html.B)
 	 */
 	public void visitB(B b) {
+		this.bCount++;
 		count(b);
 	}
 	
