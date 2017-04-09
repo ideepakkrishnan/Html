@@ -1,0 +1,32 @@
+----------------------------------------------------
+CS 5500 : Managing Software Development - Homework 3
+----------------------------------------------------
+
+NOTE: Please import the project as a Maven project into eclipse so that the
+dependencies are taken care off by the specified POM.
+
+All java implementations can be found under the following folder:
+src/main/java/
+
+All junit tests can be found in the following folder:
+src/test/java
+
+All common java files (Node and its different versions) have been placed under
+the following package:
+Code: src/main/java/com.neu.html
+Tests: src/test/java/com.neu.html
+
+The java files and junit tests for each question have been packaged in the
+following manner:
+Q1. Code: src/main/java/com.neu.html_factory
+    Tests: src/test/java/com.neu.html_factory
+    (Run HTMLFactoryTests.java, LoggingHTMLFactoryTests.java)
+
+Q2. Code: src/main/java/com.neu.iterators
+    Tests: src/test/java/com.neu.iterators (Run BitVectorTestSuite.java)
+
+Q3. Code: src/main/java/com.neu.adapter
+    Tests: src/test/java/com.neu.adapter (Run StringSetTestSuite.java)
+
+Q4. Code: src/main/java/com.neu.html_visitor
+    Tests: src/test/java/com.neu.html_factory (Run HTMLVisitorTests.java)
