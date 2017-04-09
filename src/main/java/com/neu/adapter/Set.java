@@ -3,13 +3,33 @@ package com.neu.adapter;
 import com.neu.iterators.Iterator;
 
 public interface Set<T> {
-	void add(T t); // add an element to the set
+	/**
+	 * Add an element to the set
+	 * @param t
+	 */
+	void add(T t); 
 
-	void addAll(Set<T> s); // add all elements in the argument set
+	/**
+	 * Add all elements in the argument set
+	 * @param s
+	 */
+	void addAll(Set<T> s);
 
-	void remove(T t); // remove an element from the set
+	/**
+	 * Remove an element from the set
+	 * @param t
+	 */
+	void remove(T t);
 
-	int size(); // return the number of arguments in the set
+	/**
+	 * Return the number of arguments in the set
+	 * @return
+	 */
+	int size();
 
-	Iterator<T> iterator(); // return an iterator over the set
+	/**
+	 * Return an iterator over the set
+	 * @return
+	 */
+	Iterator<T> iterator();
 }

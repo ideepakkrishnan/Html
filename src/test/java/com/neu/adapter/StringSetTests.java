@@ -10,99 +10,100 @@ public class StringSetTests {
 
 	@Test
 	public void testAdd() {
-		Set<String> set = new StringSet(30);
-		set.add("Add Test");
-		Iterator<String> itr = set.iterator();
-		while(itr.hasAnotherElement()){
-			assertEquals(true, itr.nextElement().equalsIgnoreCase("Add Test"));
+		Set<String> store = new StringSet(32);
+		store.add("First");
+		Iterator<String> it = store.iterator();
+		while(it.hasAnotherElement()){
+			assertEquals(true, it.nextElement().equals("First"));
 		}
 	}
 	
 	@Test
 	public void testAddMultipleStrings() {
-		Set<String> set = new StringSet(30);
-		set.add("Add Test 1");
-		set.add("Add Test 2");
-		set.add("Add Test 3");
-		set.add("Add Test 4");
-		Iterator<String> itr = set.iterator();
-		int count = 0;
+		Set<String> store = new StringSet(32);
+		store.add("First");
+		store.add("Second");
+		store.add("Third");
+		
+		Iterator<String> itr = store.iterator();
+		int length = 0;
 		while(itr.hasAnotherElement()){
 			itr.nextElement();
-			count++;
+			length++;
 		}
-		assertEquals(4, count);
+		
+		assertEquals(3, length);
 	}
 
 	@Test
 	public void testAddAll() {
-		Set<String> set = new StringSet(30);
-		set.add("Add Test 1");
-		set.add("Add Test 2");
-		set.add("Add Test 3");
-		set.add("Add Test 4");
+		Set<String> store = new StringSet(32);
+		store.add("First");
+		store.add("Second");
+		store.add("Third");
 		
-		Set<String> testSet = new StringSet(4);
-		testSet.addAll(set);
+		Set<String> testSet = new StringSet(3);
+		testSet.addAll(store);
 		
-		Iterator<String> itr = testSet.iterator();
-		int count = 0;
-		while(itr.hasAnotherElement()){
-			itr.nextElement();
-			count++;
+		Iterator<String> it = testSet.iterator();
+		int length = 0;
+		while(it.hasAnotherElement()){
+			it.nextElement();
+			length++;
 		}
-		assertEquals(4, count);
+		
+		assertEquals(3, length);
 		
 	}
 
 	@Test
 	public void testRemove() {
-		Set<String> set = new StringSet(30);
-		set.add("Add Test 1");
-		set.add("Add Test 2");
-		set.add("Add Test 3");
-		set.add("Add Test 4");
+		Set<String> store = new StringSet(32);
+		store.add("First");
+		store.add("Second");
+		store.add("Third");
 		
-		Iterator<String> itr = set.iterator();
-		int count = 0;
-		while(itr.hasAnotherElement()){
-			itr.nextElement();
-			count++;
+		Iterator<String> it = store.iterator();
+		int length = 0;
+		while(it.hasAnotherElement()){
+			it.nextElement();
+			length++;
 		}
-		assertEquals(4, count);
+		assertEquals(3, length);
 		
-		set.remove("Add Test 1");
+		store.remove("Second");
 		
-		count = 0;
-		while(itr.hasAnotherElement()){
-			itr.nextElement();
-			count++;
+		length = 0;
+		while(it.hasAnotherElement()){
+			it.nextElement();
+			length++;
 		}
 		
-		assertEquals(3, count);
+		assertEquals(2, length);
 		
 	}
 
 	@Test
 	public void testSize() {
-		Set<String> set = new StringSet(30);
-		assertEquals(30, set.size());
+		Set<String> store = new StringSet(32);
+		assertEquals(32, store.size());
 	}
 
 	@Test
 	public void testIterator() {
-		Set<String> set = new StringSet(30);
-		set.add("Add Test 1");
-		set.add("Add Test 2");
-		set.add("Add Test 3");
-		set.add("Add Test 4");
-		Iterator<String> itr = set.iterator();
-		int count = 0;
-		while(itr.hasAnotherElement()){
-			itr.nextElement();
-			count++;
+		Set<String> store = new StringSet(30);
+		store.add("First");
+		store.add("Second");
+		store.add("Third");
+		
+		Iterator<String> it = store.iterator();
+		int length = 0;
+		while(it.hasAnotherElement()){
+			it.nextElement();
+			length++;
 		}
-		assertEquals(4, count);
+		
+		assertEquals(3, length);
 	}
 
 }
