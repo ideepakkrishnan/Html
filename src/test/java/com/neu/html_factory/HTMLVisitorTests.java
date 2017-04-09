@@ -56,7 +56,8 @@ public class HTMLVisitorTests extends TestCase {
     	b.set(bAtts, new Div());
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitB(b);
+    	
+    	b.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 0);
     	assertEquals(visitor.getHeadCount(), 0);
@@ -73,8 +74,13 @@ public class HTMLVisitorTests extends TestCase {
     	Div div = factory.makeDiv();
     	div.set(divAtts, "b");
     	
+    	Map<String,String> bAtts = new HashMap<String,String>();
+    	bAtts.put("class", "highlight");
+    	B b = factory.makeB();
+    	b.set(bAtts, div);
+    	
     	List<Node> children = new LinkedList<Node>();
-    	children.add(div);
+    	children.add(b);
     	
     	Map<String,String> bodyAtts = new HashMap<String,String>();
     	bodyAtts.put("id", "content");
@@ -82,13 +88,14 @@ public class HTMLVisitorTests extends TestCase {
     	body.set(bodyAtts, children);
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitBody(body);
+    	
+    	body.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 0);
     	assertEquals(visitor.getHeadCount(), 0);
     	assertEquals(visitor.getBodyCount(), 1);
     	assertEquals(visitor.getTitleCount(), 0);
-    	assertEquals(visitor.getbCount(), 0);
+    	assertEquals(visitor.getbCount(), 1);
     	assertEquals(visitor.getDivCount(), 1);
     }
     
@@ -100,7 +107,8 @@ public class HTMLVisitorTests extends TestCase {
     	div.set(divAtts, "b");
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitDiv(div);
+    	
+    	div.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 0);
     	assertEquals(visitor.getHeadCount(), 0);
@@ -123,7 +131,8 @@ public class HTMLVisitorTests extends TestCase {
     	head.set(headAtts, children);
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitHead(head);
+    	
+    	head.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 0);
     	assertEquals(visitor.getHeadCount(), 1);
@@ -156,7 +165,8 @@ public class HTMLVisitorTests extends TestCase {
     	html.set(htmlAtts, htmlChildren);
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitHTML(html);
+    	
+    	html.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 1);
     	assertEquals(visitor.getHeadCount(), 1);
@@ -176,7 +186,8 @@ public class HTMLVisitorTests extends TestCase {
     	title.set(titleAtts, "Northeastern University");
     	
     	NodeCountVisitor visitor = new NodeCountVisitor();
-    	visitor.visitTitle(title);
+    	
+    	title.accept(visitor);
     	
     	assertEquals(visitor.getHtmlCount(), 0);
     	assertEquals(visitor.getHeadCount(), 0);

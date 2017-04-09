@@ -29,27 +29,13 @@ public class NodeCountVisitor implements NodeVisitor {
 	 */
 	public int getbCount() {
 		return bCount;
-	}
-
-	/**
-	 * @param bCount the bCount to set
-	 */
-	public void setbCount(int bCount) {
-		this.bCount = bCount;
-	}
+	}	
 
 	/**
 	 * @return the bodyCount
 	 */
 	public int getBodyCount() {
 		return bodyCount;
-	}
-
-	/**
-	 * @param bodyCount the bodyCount to set
-	 */
-	public void setBodyCount(int bodyCount) {
-		this.bodyCount = bodyCount;
 	}
 
 	/**
@@ -60,24 +46,10 @@ public class NodeCountVisitor implements NodeVisitor {
 	}
 
 	/**
-	 * @param divCount the divCount to set
-	 */
-	public void setDivCount(int divCount) {
-		this.divCount = divCount;
-	}
-
-	/**
 	 * @return the headCount
 	 */
 	public int getHeadCount() {
 		return headCount;
-	}
-
-	/**
-	 * @param headCount the headCount to set
-	 */
-	public void setHeadCount(int headCount) {
-		this.headCount = headCount;
 	}
 
 	/**
@@ -88,24 +60,10 @@ public class NodeCountVisitor implements NodeVisitor {
 	}
 
 	/**
-	 * @param htmlCount the htmlCount to set
-	 */
-	public void setHtmlCount(int htmlCount) {
-		this.htmlCount = htmlCount;
-	}
-
-	/**
 	 * @return the titleCount
 	 */
 	public int getTitleCount() {
 		return titleCount;
-	}
-
-	/**
-	 * @param titleCount the titleCount to set
-	 */
-	public void setTitleCount(int titleCount) {
-		this.titleCount = titleCount;
 	}
 
 	public NodeCountVisitor() {		
